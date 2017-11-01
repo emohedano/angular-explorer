@@ -1,0 +1,23 @@
+<form [formGroup]="frm" (keyup.enter)="onSubmit(frm.value)">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Clave de usuario" name="username"
+      [formControl]="frm.controls['username']" [(ngModel)]="user.username">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Nombre de usuario" name="name"
+      [formControl]="frm.controls['name']" [(ngModel)]="user.name">
+  </mat-form-field>
+  <mat-form-field class="full-width" *ngIf="isNew">
+    <input matInput placeholder="Contraseña" name="password" type="password"
+      [formControl]="frm.controls['password']" [(ngModel)]="password">
+  </mat-form-field>
+  <mat-form-field class="full-width" *ngIf="isNew">
+    <input matInput placeholder="Confirmar contraseña" name="passwordConfirm" type="password"
+      [formControl]="frm.controls['passwordConfirm']">
+  </mat-form-field>
+</form>
+<div class="buttons-bar">
+  <a mat-raised-button routerLink="/users">Cancelar</a>
+  <button mat-raised-button color="primary" (click)="onSubmit(frm.value)" [disabled]="!frm.valid">Guardar</button>
+</div>
+

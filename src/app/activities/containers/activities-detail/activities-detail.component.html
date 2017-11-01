@@ -1,0 +1,56 @@
+<form [formGroup]="frm" (keyup.enter)="onSubmit(frm.value)">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Nombre" name="name"
+        [formControl]="frm.controls['name']" [(ngModel)]="activity.name">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Descripción" name="description"
+        [formControl]="frm.controls['description']" [(ngModel)]="activity.description"></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Comentario" name="comment"
+        [formControl]="frm.controls['comment']" [(ngModel)]="activity.comment"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Recompensa (estrellas)" name="bounty"
+       [formControl]="frm.controls['bounty']" [(ngModel)]="activity.bounty">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Tipo" name="type"
+        [formControl]="frm.controls['type']"
+        [(ngModel)]="activity.type"
+        [compareWith]="catalogComparator"
+      >
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{type.text}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Periodicidad" name="periodicity"
+        [formControl]="frm.controls['periodicity']"
+        [(ngModel)]="activity.periodicity"
+        [compareWith]="catalogComparator"
+      >
+        <mat-option *ngFor="let periodicityType of periodicityTypes" [value]="periodicityType">
+          {{periodicityType.text}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Categoría" name="category"
+        [formControl]="frm.controls['category']"
+        [(ngModel)]="activity.category"
+        [compareWith]="catalogComparator"
+      >
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category.text}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</form>
+<div class="buttons-bar">
+    <a mat-raised-button routerLink="/activities">Cancelar</a>
+    <button mat-raised-button color="primary" (click)="onSubmit(frm.value)" [disabled]="!frm.valid">Guardar</button>
+</div>
+

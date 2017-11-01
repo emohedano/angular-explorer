@@ -1,0 +1,45 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 14px;
+  color: white;
+  background-color: #333;
+  margin: 0;
+}
+
+.mat-toolbar{
+  margin-bottom: 20px;
+
+  .fill {
+    flex-grow: 2;
+  }
+}
+
+form{
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.mat-input-container{
+  width: 48%;
+}
+
+.mat-input-container.full-width{
+  width: 100%;
+}
+
+.mat-button-wrapper .mat-primary{
+  color: #333;
+}
+
+.buttons-bar{
+  width: 50%;
+  margin: 0 auto;
+  text-align: right;
+}

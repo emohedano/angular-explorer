@@ -1,0 +1,25 @@
+form{
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.mat-input-container{
+  width: 48%;
+}
+
+.mat-input-container.full-width{
+  width: 100%;
+}
+
+.mat-button-wrapper{
+  color: white;
+}
+
+.buttons-bar{
+  width: 50%;
+  margin: 0 auto;
+  text-align: right;
+}

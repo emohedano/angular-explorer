@@ -1,0 +1,53 @@
+@import '~@angular/material/theming';
+
+.activities-list{
+
+  .mat-expansion-panel-header-title,
+  .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+
+  .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .activity-description{
+    text-align: left;
+  }
+
+  .mat-expansion-panel-header-title{
+    line-height: 48px;
+  }
+
+  .bounty-widget{
+    order: -1;
+    margin-right: 16px;
+    width: 60px;
+
+    span{
+      font-size: 20px;
+      line-height: 48px;
+    }
+
+    .bounty-star{
+      font-size: 26px;
+      color: map-get($mat-yellow, 500);
+      position: relative;
+      top: 2px;
+    }
+
+  }
+
+  .mat-raised-button{
+    color: white;
+  }
+
+}
+
+.btn-new{
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 30px;
+}

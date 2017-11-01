@@ -1,0 +1,17 @@
+<ul class="user-list">
+  <li class="item" *ngFor="let user of users$ | async">
+    <div class="avatar-widget">
+        {{user.name | nameInitials}}
+    </div>
+    <div class="star-widget">
+        <div class="counter">{{user.stars}}</div>
+        <i class="mdi mdi-star star"></i>
+    </div>
+    <div>
+      <strong class="name">{{user.name}}</strong>
+    </div>
+  </li>
+</ul>
+<a mat-fab color="primary" class="btn-new" routerLink="/users/new" *ngIf="isAdminSession$ | async">
+    <i class="mdi mdi-plus"></i>
+</a>

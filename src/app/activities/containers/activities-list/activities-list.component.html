@@ -1,0 +1,38 @@
+<ul class="activities-list">
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel *ngFor="let a of activities$ | async; let i=index;" [expanded]="step === i" (opened)="setStep(i)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <div class="bounty-widget">
+          <span>{{a.bounty}}</span>
+          <i class="mdi mdi-star bounty-star"></i>
+        </div>
+        <mat-panel-title>
+            {{a.name}}
+        </mat-panel-title>
+        <mat-panel-description>
+            <mat-chip-list class="mat-chip-list-stacked">
+                <mat-chip>
+                    {{a.category.text}}
+                </mat-chip>
+            </mat-chip-list>
+            <div>
+                <a mat-raised-button [routerLink]="['/activities', a._id]" *ngIf="isAdminSession$ | async">
+                  <i class="mdi mdi-pencil"></i>
+                  Editar
+                </a>
+                <button mat-raised-button color="accent">
+                  <i class="mdi mdi-star bounty-star"></i>
+                  Reclamar premio
+                </button>
+            </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="activity-description">
+        {{a.description}}
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ul>
+<a mat-fab color="primary" class="btn-new" routerLink="/activities/new" *ngIf="isAdminSession$ | async">
+    <i class="mdi mdi-plus"></i>
+</a>
