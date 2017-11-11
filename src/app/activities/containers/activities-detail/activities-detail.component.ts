@@ -60,7 +60,7 @@ export class ActivitiesDetailComponent implements OnInit, OnDestroy {
     });
 
     this.activity$ = this.store.select(fromActivity.getSelectedActivity);
-    this.activity$.subscribe( actitivty  => this.activity = actitivty );
+    this.activity$.subscribe( actitivty => this.activity = actitivty );
 
   }
 
@@ -93,7 +93,7 @@ export class ActivitiesDetailComponent implements OnInit, OnDestroy {
   }
 
   catalogComparator(a, b) {
-    return (a && b) ? b.value === b.value : false;
+    return (a && b) ? a.value === b.value : false;
   }
 
 }

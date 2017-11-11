@@ -1,5 +1,5 @@
 <ul class="user-list">
-  <li class="item" *ngFor="let user of users$ | async">
+  <li class="item" *ngFor="let user of users$ | async" [routerLink]="['/users', 'mohedano', 'profile']">
     <div class="avatar-widget">
         {{user.name | nameInitials}}
     </div>

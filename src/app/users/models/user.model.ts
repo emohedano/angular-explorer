@@ -1,3 +1,5 @@
+import { BountyClaim } from './bounty-claim.model';
+
 export class User {
   _id: string;
   username: string;
@@ -6,4 +8,5 @@ export class User {
   range: string;
   isAdmin = false;
   modelType = 'user';
+  bountyClaims: Array<BountyClaim> = [];
 }

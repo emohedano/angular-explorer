@@ -19,6 +19,8 @@ import { UserDetailComponent } from './containers/user-detail/user-detail.compon
 import { UserListComponent } from './containers/user-list/user-list.component';
 import { UsersActions } from './actions/users.actions';
 import { NameInitialsPipe } from './components/name-initials.pipe';
+import { UserProfileComponent } from './containers/user-profile/user-profile.component';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -27,6 +29,10 @@ import { NameInitialsPipe } from './components/name-initials.pipe';
       {
         path: ':id',
         component: UserDetailComponent,
+      },
+      {
+        path: ':username/profile',
+        component: UserProfileComponent,
       },
       { path: '', component: UserListComponent },
     ]),
@@ -39,12 +45,14 @@ import { NameInitialsPipe } from './components/name-initials.pipe';
     MatFormFieldModule,
     MatButtonModule,
     MatExpansionModule,
-    MatChipsModule
+    MatChipsModule,
+    SharedModule
   ],
   declarations: [
     UserListComponent,
     UserDetailComponent,
-    NameInitialsPipe
+    NameInitialsPipe,
+    UserProfileComponent
   ],
   providers: [
     UsersActions

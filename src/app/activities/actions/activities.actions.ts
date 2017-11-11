@@ -55,7 +55,7 @@ export class ActivitiesActions {
   constructor(private store: Store<State>, private http: HttpClient, private router: Router) {
   }
 
-  fetchAllActivities() {
+  async fetchAllActivities() {
 
     const query = {
       selector: {
@@ -64,12 +64,8 @@ export class ActivitiesActions {
       }
     };
 
-    this.http.post(`${BASE_URL}/_find`, query).toPromise()
-    .then((body: any) => {
-
-      this.store.dispatch(new LoadActivitiesSuccess(body.docs));
-
-    });
+    const body: any = await this.http.post(`${BASE_URL}/_find`, query).toPromise();
+    this.store.dispatch(new LoadActivitiesSuccess(body.docs));
 
   }
 
@@ -77,7 +73,7 @@ export class ActivitiesActions {
     this.store.dispatch(new NewActivity());
   }
 
-  fetchActivity(activityId: string) {
+  async fetchActivity(activityId: string) {
 
     const query = {
       selector: {
@@ -86,21 +82,18 @@ export class ActivitiesActions {
       }
     };
 
-    this.http.post(`${BASE_URL}/_find`, query).toPromise()
-    .then((body: any) => {
+    const body: any = await this.http.post(`${BASE_URL}/_find`, query).toPromise();
 
-      const activity = body.docs[0];
-      if (activity) {
-        this.store.dispatch(new FetchActivitySuccess(activity));
-      }
+    const activity = body.docs[0];
+    if (activity) {
+      this.store.dispatch(new FetchActivitySuccess(activity));
+    }
 
-      // TODO: handle no activity found
-
-    });
+    // TODO: handle no activity found
 
   }
 
-  saveActivity(activity: Activity) {
+  async saveActivity(activity: Activity) {
 
     const dispatchSuccess = () => {
       this.store.dispatch(new SaveActivitySuccess(activity));
@@ -109,14 +102,14 @@ export class ActivitiesActions {
 
     if (activity._id) {
 
-      db.put(activity)
-      .then(dispatchSuccess);
+      await db.put(activity);
+      dispatchSuccess();
 
       return;
     }
 
-    db.post(activity)
-    .then(dispatchSuccess);
+    await db.post(activity);
+    dispatchSuccess();
 
   }
 

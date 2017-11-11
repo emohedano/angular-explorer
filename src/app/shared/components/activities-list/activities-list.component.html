@@ -1,6 +1,9 @@
 <ul class="activities-list">
-  <mat-accordion class="example-headers-align">
-    <mat-expansion-panel *ngFor="let a of activities$ | async; let i=index;" [expanded]="step === i" (opened)="setStep(i)" hideToggle="true">
+  <mat-accordion multi="true">
+    <mat-expansion-panel
+      *ngFor="let a of activities; let i=index;"
+      hideToggle="true"
+    >
       <mat-expansion-panel-header>
         <div class="bounty-widget">
           <span>{{a.bounty}}</span>
@@ -16,13 +19,18 @@
                 </mat-chip>
             </mat-chip-list>
             <div>
-                <a mat-raised-button [routerLink]="['/activities', a._id]" *ngIf="isAdminSession$ | async">
+                <a mat-raised-button [routerLink]="['/activities', a._id]" *ngIf="displayEditButton">
                   <i class="mdi mdi-pencil"></i>
                   Editar
                 </a>
-                <button mat-raised-button color="accent">
+                <button mat-raised-button color="accent" (click)="claimBounty($event, a)" *ngIf="displayBountyButton(a)"
+                >
                   <i class="mdi mdi-star bounty-star"></i>
                   Reclamar premio
+                </button>
+                <button mat-raised-button disabled *ngIf="displayClaimStatus(a)">
+                  <i class="mdi mdi-star bounty-star"></i>
+                  {{this.getClaimStatus(a)}}
                 </button>
             </div>
         </mat-panel-description>
@@ -33,6 +41,3 @@
     </mat-expansion-panel>
   </mat-accordion>
 </ul>
-<a mat-fab color="primary" class="btn-new" routerLink="/activities/new" *ngIf="isAdminSession$ | async">
-    <i class="mdi mdi-plus"></i>
-</a>

@@ -16,8 +16,10 @@ import {
 
 import { reducers } from './reducers/index';
 import { ActivitiesDetailComponent } from './containers/activities-detail/activities-detail.component';
-import { ActivitiesListComponent } from './containers/activities-list/activities-list.component';
+import { ActivitiesListPageComponent } from './containers/activities-page';
 import { ActivitiesActions } from './actions/activities.actions';
+import { UsersActions } from './../users/actions/users.actions';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -27,7 +29,7 @@ import { ActivitiesActions } from './actions/activities.actions';
         path: ':id',
         component: ActivitiesDetailComponent,
       },
-      { path: '', component: ActivitiesListComponent },
+      { path: '', component: ActivitiesListPageComponent },
     ]),
     StoreModule.forFeature('activities', reducers),
     HttpClientModule,
@@ -38,12 +40,13 @@ import { ActivitiesActions } from './actions/activities.actions';
     MatFormFieldModule,
     MatButtonModule,
     MatExpansionModule,
-    MatChipsModule
+    MatChipsModule,
+    SharedModule
   ],
   declarations: [
-    ActivitiesListComponent,
+    ActivitiesListPageComponent,
     ActivitiesDetailComponent
   ],
-  providers: [ ActivitiesActions ]
+  providers: [ ActivitiesActions, UsersActions ]
 })
 export class ActivitiesModule { }

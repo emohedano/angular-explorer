@@ -1,7 +1,7 @@
 import { loginReducer } from '../auth/reducers';
 
 export interface State {
-  readonly layout: any;
+  version: string;
 }
 
 export const rootReducer = {
