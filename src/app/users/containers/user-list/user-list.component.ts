@@ -10,7 +10,7 @@ import * as fromUsers from '../../reducers';
 import * as fromAuth from '../../../auth/reducers';
 
 @Component({
-  selector: 'users-list',
+  selector: 'app-users-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })

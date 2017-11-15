@@ -1,4 +1,14 @@
-<div>
-  {{(user$ | async).name}}
+<div class="bio-wrapper">
+  <div class="avatar">
+    {{(user$ | async).name | nameInitials}}
+  </div>
+  <div class="bio">
+      <div class="name">
+        {{(user$ | async).name}}
+        <button class="btn-edit" mat-raised-button color="primary" [routerLink]="['/users', 'mohedano']">Editar</button>
+      </div>
+      <div class="range">Murloc</div>
+
+  </div>
 </div>
 <app-activities-list [activities]="activities"></app-activities-list>

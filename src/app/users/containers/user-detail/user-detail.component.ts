@@ -38,12 +38,12 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       passwordConfirm : ['']
     });
 
-    this.user$ = this.store.select(fromUser.getSelectedUser);
-    this.user$.subscribe( user  => this.user = user );
-
   }
 
   ngOnInit() {
+
+    this.user$ = this.store.select(fromUser.getSelectedUser);
+    this.user$.subscribe( user  => this.user = user );
 
     this.routeSub = this.route.params.subscribe(params => {
 
