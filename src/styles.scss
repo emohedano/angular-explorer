@@ -26,6 +26,7 @@ form{
   justify-content: space-between;
   align-items: flex-start;
 }
+
 .mat-input-container{
   width: 48%;
 }
@@ -42,4 +43,8 @@ form{
   width: 50%;
   margin: 0 auto;
   text-align: right;
+}
+
+.app-button-icon{
+  font-size: 1.5em;
 }

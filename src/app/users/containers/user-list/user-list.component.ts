@@ -18,16 +18,25 @@ export class UserListComponent implements OnInit {
 
   users$: Observable<Array<User>>;
   isAdminSession$: Observable<boolean>;
+  listFilters$: Observable<fromUsers.UsersListFilters>;
 
   constructor(
     private store: Store<State>,
     public actions: UsersActions
   ) {
-    this.users$ = this.store.select(fromUsers.getAllUsers);
-    this.isAdminSession$ = this.store.select(fromAuth.isAdminSession);
   }
 
   ngOnInit(): void {
+
+    this.users$ = this.store.select(fromUsers.getFilteredUsers);
+    this.listFilters$ = this.store.select(fromUsers.getListFilters);
+    this.isAdminSession$ = this.store.select(fromAuth.isAdminSession);
+
     this.actions.fetchAllUsers();
   }
+
+  searchUsers(text) {
+    this.actions.applyUserListFilters(text);
+  }
+
 }

@@ -9,7 +9,7 @@ import { State } from '../../reducers';
 import { Activity } from '../models/activity.model';
 import { User } from './../../users/models/user.model';
 import { UsersActions } from './../../users/actions/users.actions';
-import { ActivitiesActions } from './../actions/activities.actions';
+import { ActivitiesActions } from '../actions/activities.actions';
 import * as fromActivity from '../reducers';
 import * as fromAuth from '../../auth/reducers';
 

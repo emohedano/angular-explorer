@@ -8,5 +8,5 @@ export class User {
   range: string;
   isAdmin = false;
   modelType = 'user';
-  bountyClaims: Array<BountyClaim> = [];
+  bountyClaims: BountyClaim[] = [];
 }

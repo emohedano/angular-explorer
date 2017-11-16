@@ -1,3 +1,12 @@
+<form class="filters">
+    <mat-form-field>
+        <input matInput placeholder="Buscar..." (keyup.enter)="searchUsers($event.target.value)">
+      </mat-form-field>
+    <button mat-icon-button class="app-button-icon" type="button" (click)="this.actions.toggleSortOrder()" matTooltip="Ordernar">
+        <i class="mdi" [ngClass]="((listFilters$ | async ).sortAsc)?'mdi-sort-ascending':'mdi-sort-descending'"
+        ></i>
+    </button>
+</form>
 <ul class="user-list">
   <li class="item" *ngFor="let user of users$ | async" [routerLink]="['/users', 'mohedano', 'profile']">
     <div class="avatar-widget">

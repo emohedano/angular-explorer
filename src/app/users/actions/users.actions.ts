@@ -18,6 +18,8 @@ export const NEW_USER = '[Users] New';
 export const NEW_USER_SUCCESS = '[Users] New User Created';
 export const FETCH_USER_SUCCESS = '[Users] New User Created';
 export const SAVE_USER_SUCCESS = '[Users] New User Created';
+export const TOGGLE_USER_LIST_ORDER = '[Users] Toggle List Order';
+export const FILTER_USER_LIST = '[Users] Filter List';
 
 export class LoadUsers implements Action {
   readonly type = LOAD_USERS;
@@ -46,6 +48,15 @@ export class FetchUserSuccess implements Action {
 export class SaveUserSuccess implements Action {
   readonly type = SAVE_USER_SUCCESS;
   constructor(public payload: User) {}
+}
+
+export class ToggleUserListOrder implements Action {
+  readonly type = TOGGLE_USER_LIST_ORDER;
+}
+
+export class FilterUserList implements Action {
+  readonly type = FILTER_USER_LIST;
+  constructor(public payload: string) {}
 }
 
 const BASE_URL = environment.apiBaseUrl;
@@ -178,4 +189,11 @@ export class UsersActions {
 
   }
 
+  toggleSortOrder() {
+    this.store.dispatch(new ToggleUserListOrder());
+  }
+
+  applyUserListFilters(searchstring) {
+    this.store.dispatch(new FilterUserList(searchstring));
+  }
 }

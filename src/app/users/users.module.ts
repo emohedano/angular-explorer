@@ -11,7 +11,8 @@ import {
   MatFormFieldModule,
   MatButtonModule,
   MatExpansionModule,
-  MatChipsModule
+  MatChipsModule,
+  MatTooltipModule
 } from '@angular/material';
 
 import { reducers } from './reducers/index';
@@ -46,6 +47,7 @@ import { SharedModule } from './../shared/shared.module';
     MatButtonModule,
     MatExpansionModule,
     MatChipsModule,
+    MatTooltipModule,
     SharedModule
   ],
   declarations: [
